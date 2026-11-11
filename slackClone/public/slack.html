@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flowbite App</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Color Palette -->
+    <style type="text/tailwindcss">
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        @theme {
+            --color-dirty-white-1: #d0bcb0;
+            --color-dirty-white-2: #d4c4bb;
+            --color-dirty-white-3: #ddd0c9;
+            --color-dirty-white-4: #e5dfda;
+            --color-dirty-white-5: #eae7e6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<div class="w-screen h-screen">
+    <div class="flex flex-row h-full">
+        <!-- namespaces -->
+<!--        <aside class="flex justify-center w-[70px] py-4 border-r border-r-dirty-white-5">-->
+        <aside class="flex justify-center w-[70px] py-4 bg-[#181a1e]">
+            <ul class="namespaces flex flex-col gap-5"></ul>
+        </aside>
+        <!-- rooms -->
+        <section class="rooms w-[250px] border-r border-r-dirty-white-5 p-4 bg-[#ffffff]">
+            <div class="flex flex-col gap-3">
+                <div class="main-rooms">
+                    <h6 class="cursor-pointer font-semibold">
+                        <i class="ri-arrow-down-s-line mr-1"></i>Rooms
+                    </h6>
+                    <ul class="room-list mt-2 ms-2">
+                        <li>Main Room</li>
+                        <li>Meeting Room</li>
+                    </ul>
+                </div>
+                <div class="dm">
+                    <h6 class="cursor-pointer font-semibold">
+                        <i class="ri-arrow-down-s-line mr-1"></i>Direct Messages
+                    </h6>
+                    <ul class="room-list mt-2 ms-2">
+                        <li>Main Room</li>
+                        <li>Meeting Room</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <main class="grow">
+            <div class="h-full flex flex-col gap-3">
+                <!-- Chat Info and Search Box-->
+                <section class="w-full p-3">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h1 class="curr-room-text inline-block">Current Room</h1>
+                            <small class="curr-room-num-users">Users <i class="ri-user-3-fill"></i></small>
+                        </div>
+                        <div>Search</div>
+                    </div>
+                </section>
+                <!-- Chat -->
+                <section class="w-full p-3">
+                    <ul id="messages" class="w-full space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <div class="flex-shrink-0">
+                                <img src="https://via.placeholder.com/30" alt="User avatar" class="rounded-full" />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-gray-900">
+                                    rbunch <span class="ml-1 text-xs font-normal text-gray-500">1:25 pm</span>
+                                </div>
+                                <div class="text-sm text-gray-700">I went running today.</div>
+                            </div>
+                        </li>
+
+                        <li class="flex items-start space-x-3">
+                            <div class="flex-shrink-0">
+                                <img src="https://via.placeholder.com/30" alt="User avatar" class="rounded-full" />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-gray-900">
+                                    rbunch <span class="ml-1 text-xs font-normal text-gray-500">2:25 pm</span>
+                                </div>
+                                <div class="text-sm text-gray-700">I'm getting my tires changed this afternoon.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <!-- Chat Form -->
+                <section class="message-form mt-auto w-full">
+                    <form id="message-form" class="flex items-center gap-2 p-3 w-full">
+                        <input id="user-message" type="text" placeholder="Enter you message" class="flex-1 px-4 py-2.5 text-sm bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition" required />
+                        <button type="submit" class="px-4 py-2.5 cursor-pointer bg-dirty-white-1 hover:bg-dirty-white-3 text-white text-sm font-medium rounded-lg transition flex items-center gap-1.5">
+                            <span>Send</span>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Flowbite JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script>
+<!-- Socket IO -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/buildMessageHtml.js"></script>
+<script src="/joinRoom.js"></script>
+<script src="/joinNs.js"></script>
+<script src="/scripts.js"></script>
+</body>
+</html>
